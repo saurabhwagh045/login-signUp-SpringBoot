@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title>Home</title>
+</head>
+
+<body style="background-color: #ffe6ff;">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Registration Form</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span></a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a href="login" class="btn btn-outline-success my-2 my-sm-0 mr-1"
+               type="submit">Login</a>
+            <a href="#" class="btn btn-outline-success my-2 my-sm-0 " type="submit">Signup</a>
+        </form>
+    </div>
+</nav>
+<!-- End Navbar -->
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Profile Section -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Profile Details</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+                    <p><strong>Date of Birth:</strong> <span th:text="${user.dob}"></span></p>
+                    <p><strong>Address:</strong> <span th:text="${user.address}"></span></p>
+                    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+                    <p><strong>Password:</strong> <span th:text="${user.password}"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="col-md-8">
+            <h1>Welcome Home</h1>
+            <p th:text="'Hello, ' + ${user.name} + '! Welcome to the application.'"></p>
+            <a th:href="@{/update-details}" class="btn btn-primary">Update Details</a>
+            <a th:href="@{/view-details}" class="btn btn-secondary">View Updated Details</a>
+            <form th:action="@{/delete-account}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete My Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
